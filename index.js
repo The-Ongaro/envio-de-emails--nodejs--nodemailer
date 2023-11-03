@@ -1,6 +1,7 @@
-const nodemailer = require('nodemailer');
-const express = require('express');
+import nodemailer from 'nodemailer';
+import express from 'express';
 const server = express();
+import message from './email.js';
 
 const port = 5000;
 
@@ -21,20 +22,7 @@ server.get('/sendemail', (req, resp) => {
         to: "",
         replyTo: "",
         subject: "Envio de E-mail com NodeJs + Nodemailer",
-        html:`<h1>EAI, ZÉ!</h1>
-              <h2>Já Comprou uma televisão, Zé!?</h2>
-              <p>O que vêm junto com a televisão?</p>
-
-              <p><strong>Alternativas:</strong></p>
-              <ul>
-                  <il>a - A caixa de Papelão</il>
-                  <br>
-                  <il>b - O Controle Remoto</il>
-                  <br>
-                  <il>c - O Manual</il>
-                  <br>
-                  <il>d - O Isopor</il>
-              </ul>`      
+        html: message    
     })
     .then(response => {
         console.log(response);
